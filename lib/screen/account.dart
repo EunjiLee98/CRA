@@ -53,6 +53,7 @@ class _AccountScreenState extends State<AccountScreen> {
     CollectionReference collectionReference =
         FirebaseFirestore.instance.collection('MyUsers');
     QuerySnapshot querySnapshot = await collectionReference.get();
+
     querySnapshot.docs[2].reference.update({
       "name": widget.name,
       "password": widget.password,
@@ -62,36 +63,6 @@ class _AccountScreenState extends State<AccountScreen> {
     });
   }
 
-  /*
-  Widget _buildName() {
-    String textName;
-    if (widget.name == null) {
-      textName = '아이디';
-    } else {
-      textName = '아이디 : ' + widget.name;
-    }
-    return TextFormField(
-      controller: idController,
-      decoration: InputDecoration(
-        labelText: textName,
-        labelStyle: TextStyle(color: Colors.black),
-        enabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: Color.fromARGB(250, 247, 162, 144)),
-          //borderRadius: BorderRadius.all(Radius.circular(30)),
-        ),
-        focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.red),
-          //borderRadius: BorderRadius.all(Radius.circular(30)),
-        ),
-      ),
-      maxLength: 10,
-      onSaved: (String value) {
-        widget.name = value;
-        data['name'] = widget.name;
-      },
-    );
-  }
-  */
   Widget _buildPassword() {
     String labelText;
     if (widget.password == null) {
@@ -198,79 +169,6 @@ class _AccountScreenState extends State<AccountScreen> {
       },
     );
   }
-  /*
-  Widget _buildBank() {
-    String textBank;
-    if (widget.bank == null) {
-      textBank = '은행명';
-    } else {
-      textBank = '은행명 : ' + widget.bank;
-    }
-    return TextFormField(
-      decoration: InputDecoration(
-        labelText: textBank,
-        labelStyle: TextStyle(color: Colors.black),
-        enabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: Color.fromARGB(250, 247, 162, 144)),
-          //borderRadius: BorderRadius.all(Radius.circular(30)),
-        ),
-        focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.red),
-          //borderRadius: BorderRadius.all(Radius.circular(30)),
-        ),
-      ),
-      maxLength: 10,
-      /*
-      validator: (String value) {
-        if (value.isEmpty) {
-          return '은행명을 입력하세요';
-        }
-        return null;
-      },
-      */
-      onSaved: (String value) {
-        widget.bank = value;
-        data['bank'] = widget.bank;
-      },
-    );
-  }
-
-  Widget _buildAccount() {
-    String textAccount;
-    if (widget.account == null) {
-      textAccount = '계좌번호';
-    } else {
-      textAccount = '게좌번호 : ' + widget.account;
-    }
-    return TextFormField(
-      decoration: InputDecoration(
-        labelText: textAccount,
-        labelStyle: TextStyle(color: Colors.black),
-        enabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: Color.fromARGB(250, 247, 162, 144)),
-          //borderRadius: BorderRadius.all(Radius.circular(30)),
-        ),
-        focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.red),
-          //borderRadius: BorderRadius.all(Radius.circular(30)),
-        ),
-      ),
-      maxLength: 20,
-      /*
-      validator: (String value) {
-        if (value.isEmpty) {
-          return '계좌번호를 입력하세요';
-        }
-        return null;
-      },
-      */
-      onSaved: (String value) {
-        widget.account = value;
-        data['account'] = widget.account;
-      },
-    );
-  }
-  */
 
   @override
   Widget build(BuildContext context) {
@@ -289,41 +187,10 @@ class _AccountScreenState extends State<AccountScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                //_buildName(),
                 _buildPassword(),
                 _buildPassword2(),
                 _checkPassword(),
-                //_buildEmail(),
-                // _buildBank(),
-                //_buildAccount(),
                 SizedBox(height: 80),
-                /*
-                MaterialButton(
-                  child: Container(
-                    child: Text(
-                      '취소',
-                      style: TextStyle(color: Colors.white, fontSize: 16),
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.red[300],
-                    ),
-                    padding: const EdgeInsets.all(10.0),
-                  ),
-                  onPressed: () {
-                    fetchData();
-                  },
-                  */
-                /*
-                    _formKey.currentState.save();
-                    print(widget.user.id);
-                    print(widget.user.password);
-                    print(widget.user.email);
-                    print(widget.user.account);
-                     }   //Send to API
-                     
-                ),*/
-                //Text(data.toString()),
-                //SizedBox(height: 30),
                 MaterialButton(
                   child: Container(
                     child: Text(
